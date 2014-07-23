@@ -1,14 +1,14 @@
 //
 //  GameScene.swift
-//  T4
+//  test
 //
-//  Created by Amit D. Bansil on 7/20/14.
+//  Created by Amit D. Bansil on 7/23/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
 import SpriteKit
 
-class GameScene: SKScene {
+class T4Scene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
@@ -24,18 +24,6 @@ class GameScene: SKScene {
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
         }
     }
    

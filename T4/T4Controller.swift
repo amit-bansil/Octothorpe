@@ -1,8 +1,8 @@
 //
 //  GameViewController.swift
-//  T4
+//  test
 //
-//  Created by Amit D. Bansil on 7/20/14.
+//  Created by Amit D. Bansil on 7/23/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
@@ -18,18 +18,18 @@ extension SKNode {
         var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
         
         archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as GameScene
+        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as T4Scene
         archiver.finishDecoding()
         return scene
     }
 }
 
-class GameViewController: UIViewController {
+class T4ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        if let scene = T4Scene.unarchiveFromFile("T4Scene") as? T4Scene {
             // Configure the view.
             let skView = self.view as SKView
             skView.showsFPS = true
