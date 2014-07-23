@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias T4Point = (x: Int,y: Int)
+public typealias T4Point = (x: Int, y: Int)
 public enum T4Player {
     case X, O
 }
@@ -47,6 +47,9 @@ class T4Game {
        return board[0].count
     }
     }
+    public func getPlayerAt(point: T4Point)-> T4Player? {
+        return board[point.x][point.y]
+    }
     
     var winner: T4Player? {
     get {
@@ -58,9 +61,6 @@ class T4Game {
         }
         return nil
     }
-    }
-    public func getPlayerAt(point: T4Point)-> T4Player? {
-        return board[point.x][point.y]
     }
     
     func isWinner(player: T4Player)-> Bool{
