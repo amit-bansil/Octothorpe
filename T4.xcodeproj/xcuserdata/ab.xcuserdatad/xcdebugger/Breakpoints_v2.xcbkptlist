@@ -9,7 +9,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "T4/Model.swift"
+            filePath = "T4/T4Model.swift"
             timestampString = "427562959.374295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
