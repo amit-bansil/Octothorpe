@@ -110,14 +110,3 @@ private func getIncreasingUnitVectors()->[T4Point] {
     return ret
 }
 private let INCREASING_UNIT_VECTORS = getIncreasingUnitVectors()
-
-//lookup possibly out of bounds element of array
-public extension Array {
-    func qGet(index: Int)-> T?{
-        if index < 0 || index >= count {
-            return nil
-        }else{
-            return self[index]
-        }
-    }
-}
