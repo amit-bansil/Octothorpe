@@ -6,14 +6,13 @@
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
-import Foundation
-
 public typealias T4Point = (x: Int, y: Int)
+
 public enum T4Player {
     case X, O
 }
 
-class T4Game {
+class T4Model: Observable {
     private var board:[[T4Player?]] //x, y
     
     private(set) var currentPlayer: T4Player
@@ -47,6 +46,17 @@ class T4Game {
        return board[0].count
     }
     }
+    var coordinates: [T4Point] {
+    get{
+        var ret = [T4Point]()
+        for x in 0..<width {
+            for y in 0..<height {
+                ret += (x,y)
+            }
+        }
+        return ret
+    }
+    }
     public func getPlayerAt(point: T4Point)-> T4Player? {
         return board[point.x][point.y]
     }
@@ -64,12 +74,10 @@ class T4Game {
     }
     
     func isWinner(player: T4Player)-> Bool{
-        for (x, column) in enumerate(board) {
-            for (y, square) in enumerate(column) {
-                for direction in INCREASING_UNIT_VECTORS {
-                    if isWinningLine(forPlayer:player, startingAt:(x, y), heading:direction) {
-                        return true
-                    }
+        for coordinate in coordinates {
+            for direction in INCREASING_UNIT_VECTORS {
+                if isWinningLine(forPlayer:player, startingAt:coordinate, heading:direction) {
+                    return true
                 }
             }
         }

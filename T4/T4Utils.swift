@@ -6,15 +6,28 @@
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
-import Foundation
-
 //lookup possibly out of bounds element of array
 public extension Array {
-    func qGet(index: Int)-> T?{
+    public func qGet(index: Int)-> T?{
         if index < 0 || index >= count {
             return nil
         }else{
             return self[index]
+        }
+    }
+}
+
+class Observable {
+    public typealias Listener = ()->()
+    //Memory leak??
+    private var listeners = [Listener]()
+    
+    public func addListener(listener: Listener){
+        listeners += listener
+    }
+    func dispatchEvent(){
+        for listener in listeners {
+            listener()
         }
     }
 }

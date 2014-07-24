@@ -9,14 +9,10 @@
 import SpriteKit
 
 class T4Scene: SKScene {
+    let app = T4App()
+    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
+        self.addChild(app.setup(view.frame))
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -24,10 +20,10 @@ class T4Scene: SKScene {
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
+            app.onTouch(location)
         }
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
     }
 }
