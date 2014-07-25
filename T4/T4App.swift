@@ -9,7 +9,7 @@
 import SpriteKit
 
 class T4App {
-    private let model = T4Model(width: 4, height: 5, winLength: 3)
+    private let model = T4Model(width: 5, height: 5, winLength: 3)
     private var touchController: T4TouchController?
     private var view: T4View?
     

@@ -58,7 +58,6 @@ class T4Model: Observable {
     }
     }
     public func getPlayerAt(point: T4Point)-> T4Player? {
-        println(point)
         return board[point.x][point.y]
     }
     
@@ -104,6 +103,7 @@ class T4Model: Observable {
         case .O:
             currentPlayer = .X
         }
+        dispatchEvent()
     }
 }
 
@@ -115,7 +115,7 @@ private func getIncreasingUnitVectors()->[T4Point] {
             ret += (x, y)
         }
     }
-    ret.filter { $0.x == 1 || $0.y == 1 }
+    ret = ret.filter { $0.x == 1 || $0.y == 1 }
     return ret
 }
 private let INCREASING_UNIT_VECTORS = getIncreasingUnitVectors()

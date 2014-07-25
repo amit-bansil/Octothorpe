@@ -22,7 +22,7 @@ class T4View {
             squares += [SKLabelNode]()
             for y in 0..<model.height {
                 let label = SKLabelNode(fontNamed:"Chalkduster")
-                label.text = "\(x),\(y)"
+                label.text = ""
                 label.fontSize = 65
                 label.verticalAlignmentMode = .Center
                 label.horizontalAlignmentMode = .Center

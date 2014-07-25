@@ -18,10 +18,16 @@ class T4TouchController {
     func onTouch(location: CGPoint) {
         let px = (location.x - frame.minX) / frame.width
         let py = (location.y - frame.minY) / frame.height
-        let x = Int(round(Float(px) * Float(model.width)))
-        let y = Int(round(Float(py) * Float(model.height)))
-        if !model.winner && model.getPlayerAt((x,y)) != nil {
-            model.move((x,y))
+        let x = Int(floor(Float(px) * Float(model.width)))
+        let y = Int(floor(Float(py) * Float(model.height)))
+        if x >= 0 && x < model.width && y >= 0 && y < model.height {
+            if model.getPlayerAt((x,y)) == nil {
+                model.move((x,y))
+            }else{
+                if let winner = model.winner {
+                    println(winner)
+                }
+            }
         }
     }
 }
