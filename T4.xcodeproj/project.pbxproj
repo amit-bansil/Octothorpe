@@ -12,7 +12,6 @@
 		20119B58197C1607002F70C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20119B57197C1607002F70C6 /* Images.xcassets */; };
 		20119B64197C1608002F70C6 /* T4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20119B63197C1608002F70C6 /* T4Tests.swift */; };
 		20119B6E197C1643002F70C6 /* T4Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20119B6D197C1643002F70C6 /* T4Model.swift */; };
-		203F5913198024F300AB17CF /* T4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 203F5910198024F300AB17CF /* T4Scene.sks */; };
 		203F5914198024F300AB17CF /* T4Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F5911198024F300AB17CF /* T4Scene.swift */; };
 		203F5915198024F300AB17CF /* T4Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F5912198024F300AB17CF /* T4Controller.swift */; };
 		203F59181980505000AB17CF /* T4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F59171980505000AB17CF /* T4View.swift */; };
@@ -41,7 +40,6 @@
 		20119B62197C1608002F70C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20119B63197C1608002F70C6 /* T4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T4Tests.swift; sourceTree = "<group>"; };
 		20119B6D197C1643002F70C6 /* T4Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Model.swift; sourceTree = "<group>"; };
-		203F5910198024F300AB17CF /* T4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = T4Scene.sks; sourceTree = "<group>"; };
 		203F5911198024F300AB17CF /* T4Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Scene.swift; sourceTree = "<group>"; };
 		203F5912198024F300AB17CF /* T4Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Controller.swift; sourceTree = "<group>"; };
 		203F59171980505000AB17CF /* T4View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4View.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				20119B4C197C1607002F70C6 /* T4Delegate.swift */,
-				203F5910198024F300AB17CF /* T4Scene.sks */,
 				203F5911198024F300AB17CF /* T4Scene.swift */,
 				203F5912198024F300AB17CF /* T4Controller.swift */,
 				20119B54197C1607002F70C6 /* Main.storyboard */,
@@ -219,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				20119B58197C1607002F70C6 /* Images.xcassets in Resources */,
-				203F5913198024F300AB17CF /* T4Scene.sks in Resources */,
 				20119B56197C1607002F70C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

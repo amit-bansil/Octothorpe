@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class T4Delegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 

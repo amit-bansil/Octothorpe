@@ -22,9 +22,13 @@ class T4View {
             squares += [SKLabelNode]()
             for y in 0..<model.height {
                 let label = SKLabelNode(fontNamed:"Chalkduster")
-                label.text = "aba"
-                label.fontSize = 65;
+                label.text = "\(x),\(y)"
+                label.fontSize = 65
+                label.verticalAlignmentMode = .Center
+                label.horizontalAlignmentMode = .Center
+                
                 label.position = makePoint(Float(x + 0.5) / Float(model.width), Float(y + 0.5) / Float(model.height))
+                
                 squares[x] += label
                 node.addChild(label)
             }
@@ -46,11 +50,10 @@ class T4View {
             drawLine(gridPath, 0, 1, y, y)
         }
         
-        gridNode.path = gridPath.CGPath;
-        gridNode.lineWidth = 10.0;
-        gridNode.strokeColor = UIColor.whiteColor();
-        gridNode.antialiased = false;
-        gridNode.position = CGPoint(x:0.5, y:0.5)
+        gridNode.path = gridPath.CGPath
+        gridNode.lineWidth = 2.0
+        gridNode.strokeColor = UIColor.whiteColor()
+        //gridNode.antialiased = false
         
         return gridNode
     }

@@ -58,6 +58,7 @@ class T4Model: Observable {
     }
     }
     public func getPlayerAt(point: T4Point)-> T4Player? {
+        println(point)
         return board[point.x][point.y]
     }
     

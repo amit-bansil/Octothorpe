@@ -12,7 +12,7 @@ class T4Scene: SKScene {
     let app = T4App()
     
     override func didMoveToView(view: SKView) {
-        self.addChild(app.setup(view.frame))
+        self.addChild(app.setup(self.frame))
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
