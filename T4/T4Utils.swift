@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
+import SpriteKit
+
 //lookup possibly out of bounds element of array
 public extension Array {
     public func qGet(index: Int)-> T?{
@@ -30,4 +32,18 @@ class Observable {
             listener()
         }
     }
+}
+
+extension UIColor {
+    class func fromHex(hexValue: UInt32)-> UIColor{
+        let r = Float((hexValue & 0xFF0000) >> 16) / (255.0)
+        let g = Float((hexValue & 0xFF00) >> 8) / (255.0)
+        let b = Float(hexValue & 0xFF) / (255.0)
+        return UIColor(
+            red:CGFloat(r),
+            green:CGFloat(g),
+            blue:CGFloat(b),
+            alpha:1.0)
+    }
+
 }

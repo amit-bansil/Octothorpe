@@ -23,10 +23,6 @@ class T4TouchController {
         if x >= 0 && x < model.width && y >= 0 && y < model.height {
             if model.getPlayerAt((x,y)) == nil {
                 model.move((x,y))
-            }else{
-                if let winner = model.winner {
-                    println(winner)
-                }
             }
         }
     }

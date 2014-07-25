@@ -22,11 +22,11 @@ class T4View {
             squares += [SKLabelNode]()
             for y in 0..<model.height {
                 let label = SKLabelNode(fontNamed:"Chalkduster")
-                label.text = ""
-                label.fontSize = 65
+                label.text = "·"
+                label.fontColor = UIColor.fromHex(0x524549)
+                label.fontSize = 36
                 label.verticalAlignmentMode = .Center
                 label.horizontalAlignmentMode = .Center
-                
                 label.position = makePoint(Float(x + 0.5) / Float(model.width), Float(y + 0.5) / Float(model.height))
                 
                 squares[x] += label
@@ -34,28 +34,7 @@ class T4View {
             }
         }
         
-        node.addChild(drawGrid())
-        
         model.addListener(self.update)
-    }
-    func drawGrid()->SKNode {
-        let gridNode = SKShapeNode();
-        let gridPath = UIBezierPath();
-        for column in 1..<model.width {
-            let x = Float(column) /  Float(model.width)
-            drawLine(gridPath, x, x, 0, 1)
-        }
-        for row in 1..<model.height {
-            let y = Float(row) /  Float(model.height)
-            drawLine(gridPath, 0, 1, y, y)
-        }
-        
-        gridNode.path = gridPath.CGPath
-        gridNode.lineWidth = 2.0
-        gridNode.strokeColor = UIColor.whiteColor()
-        //gridNode.antialiased = false
-        
-        return gridNode
     }
     func drawLine(path: UIBezierPath, _ x0:Float, _ x1:Float, _ y0:Float, _ y1:Float){
         path.moveToPoint(makePoint(x0, y0))
@@ -68,10 +47,29 @@ class T4View {
     func update() {
         for coordinate in model.coordinates {
             let text = getPlayerText(model.getPlayerAt(coordinate))
-            squares[coordinate.x][coordinate.y].text = text
+            let label = squares[coordinate.x][coordinate.y]
+            if label.text != text {
+                if text == "X" {
+                    label.fontColor = UIColor.fromHex(0xCC2A41)
+                } else {
+                    label.fontColor = UIColor.fromHex(0x759A8A)
+                }
+                label.text = text
+                label.alpha = 0
+                label.xScale = CGFloat(10.0)
+                label.yScale = CGFloat(10.0)
+                let fadeAction = SKAction.fadeInWithDuration(0.2)
+                let scaleAction = SKAction.scaleTo(1, duration:0.2)
+                fadeAction.timingMode = .EaseOut
+                scaleAction.timingMode = .EaseOut
+                label.runAction(fadeAction)
+                label.runAction(scaleAction)
+            }
         }
     }
-    
+    func aba(){
+        
+    }
     func getPlayerText(player: T4Player?)-> String {
         if let definitePlayer = player {
             switch definitePlayer {
@@ -81,7 +79,7 @@ class T4View {
                 return "O"
             }
         }else{
-            return ""
+            return "·"
         }
     }
 }

@@ -12,6 +12,7 @@ class T4Scene: SKScene {
     let app = T4App()
     
     override func didMoveToView(view: SKView) {
+        self.backgroundColor = UIColor.fromHex(0xE7CAA4)
         self.addChild(app.setup(self.frame))
     }
     
