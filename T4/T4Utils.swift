@@ -17,9 +17,35 @@ public extension Array {
             return self[index]
         }
     }
+    mutating func remove <U: Equatable> (element: U) {
+        let anotherSelf = self
+        
+        removeAll(keepCapacity: true)
+        
+        anotherSelf.each {
+            (index: Int, current: Element) in
+            if current as U != element {
+                self.append(current)
+            }
+        }
+    }
+    func each (call: (Element) -> ()) {
+        
+        for item in self {
+            call(item)
+        }
+        
+    }
+    func each (call: (Int, Element) -> ()) {
+        
+        for (index, item) in enumerate(self) {
+            call(index, item)
+        }
+        
+    }
 }
 
-class Observable {
+public class Observable {
     public typealias Listener = ()->()
     //Memory leak??
     private var listeners = [Listener]()
@@ -45,5 +71,12 @@ extension UIColor {
             blue:CGFloat(b),
             alpha:1.0)
     }
+}
 
+extension CGPoint {
+    func moveToward(target: CGPoint, amount: Double)-> CGPoint {
+        let tx: Double = Double(target.x), ty: Double = Double(target.y), x: Double = Double(self.x), y: Double = Double(self.y)
+        return CGPoint(x: CGFloat(x + (tx - x) * amount),
+            y: CGFloat(y + (ty - y) * amount))
+    }
 }
