@@ -139,7 +139,7 @@ private func getIncreasingUnitVectors()->[T4Point] {
             ret += (x, y)
         }
     }
-    ret = ret.filter { $0.x == 1 || $0.y == 1 }
+    ret = ret.filter { ($0.x == 1 || $0.y == 1) && ($0.x != 1 || $0.y != -1) }
     return ret
 }
 private let INCREASING_UNIT_VECTORS = getIncreasingUnitVectors()

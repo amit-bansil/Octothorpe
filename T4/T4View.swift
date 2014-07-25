@@ -54,11 +54,13 @@ class T4View {
         
         for hit in hits[hitCount..<hits.count] {
             let points = model.pointsFromLine(hit)
+            var delay = 0.0
             for i in 0..<model.winLength - 1 {
-                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.3)
-                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.4)
-                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.6)
-                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.7)
+                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.3, delay: delay)
+                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.4, delay: delay)
+                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.6, delay: delay)
+                addHitHint(points[i], nextPoint:points[i + 1], player:hit.player, amount:0.7, delay: delay)
+                delay += 0.4
             }
         }
         hitCount = hits.count
@@ -69,11 +71,13 @@ class T4View {
             if label.text != text {
                 label.text = text
                 label.fontColor = getPlayerColor(owner!)
-                dropIn(label)
+                dropIn(label, delay:0)
             }
         }
     }
-    func addHitHint(prevPoint: T4Point, nextPoint: T4Point, player: T4Player, amount: Double){
+    func addHitHint(prevPoint: T4Point, nextPoint: T4Point, player: T4Player,
+        amount: Double, delay: Double){
+            
         let label = SKLabelNode(fontNamed:"Chalkduster")
         label.text = "·"
         label.fontColor = getPlayerColor(player)
@@ -84,11 +88,11 @@ class T4View {
         let prevCGPoint = pointForSquare(prevPoint)
         let nextCGPoint = pointForSquare(nextPoint)
         
-        label.position = prevCGPoint.moveToward(nextCGPoint, amount: amount)
-        dropIn(label)
+        label.position = prevCGPoint.moveToward(nextCGPoint, amount:amount)
+        dropIn(label, delay:amount / 2 + delay)
         node.addChild(label)
     }
-    func dropIn(node: SKNode) {
+    func dropIn(node: SKNode, delay: Double) {
         node.alpha = 0
         node.xScale = CGFloat(10.0)
         node.yScale = CGFloat(10.0)
@@ -96,8 +100,14 @@ class T4View {
         let scaleAction = SKAction.scaleTo(1, duration:0.2)
         fadeAction.timingMode = .EaseOut
         scaleAction.timingMode = .EaseOut
-        node.runAction(fadeAction)
-        node.runAction(scaleAction)
+        let dropAction = SKAction.runBlock {
+            node.runAction(fadeAction)
+            node.runAction(scaleAction)
+        }
+        let delayAction = SKAction.waitForDuration(delay)
+        
+        let sequenceAction = SKAction.sequence([delayAction, dropAction])
+        node.runAction(sequenceAction)
     }
     
     func getPlayerColor(player: T4Player)-> UIColor {
