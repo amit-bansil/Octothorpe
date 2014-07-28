@@ -31,6 +31,7 @@ class T4View {
                 label.position = pointForSquare((x,y))
                 
                 squares[x] += label
+                dropIn(label, delay: Double(arc4random()) / Double(UINT32_MAX))
                 node.addChild(label)
             }
         }
@@ -123,7 +124,7 @@ class T4View {
         if let definitePlayer = player {
             switch definitePlayer {
             case .X:
-                return "X"
+                return "#"
             case .O:
                 return "O"
             }

@@ -18,7 +18,8 @@ class T4App {
     func onTouch(location: CGPoint) {
         touchController!.onTouch(location)
     }
-    func setup(frame: CGRect)->SKNode {
+    func setup(var frame: CGRect)->SKNode {
+        frame = CGRect(x:frame.minX, y:frame.minY, width:frame.width, height:frame.width)
         touchController = T4TouchController(model:model, frame:frame)
         view = T4View(model:model, frame:frame)
         return view!.node
