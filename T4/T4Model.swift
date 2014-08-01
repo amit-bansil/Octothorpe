@@ -6,78 +6,77 @@
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
-public typealias T4Point = (x: Int, y: Int)
+//Enumerations, Yay!
 public enum T4Player {
     case X, O
 }
-public typealias T4Line = (player:T4Player, startingAt: T4Point, heading: T4Point)
 
+//Structs are copied whenever passed rather than being passed by reference
+public struct T4Point: Hashable{
+    //let defines a constant and is the preferred way of naming a value instead of var
+    let x: Int, y: Int
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
+    
+    func destructure()-> (x: Int, y: Int) { //built in tuple type. Yay!
+        return (x, y)
+    }
+    
+    public var hashValue: Int {
+    get{
+        return 31 &* x &+ y // overflow-tastic (arithmetic is checked by default. yay!)
+    }
+    }
+}
+//type alias's make tuples more useful
+public typealias T4Line = (player: T4Player, startingAt: T4Point, heading: T4Point)
+
+//operator overloading. Yay!
 public func==(lhs: T4Point, rhs:T4Point)-> Bool{
     return lhs.x == rhs.x && lhs.y == rhs.y
 }
+
 public func==(lhs: T4Line, rhs:T4Line)-> Bool{
     return lhs.player == rhs.player
         && lhs.heading == rhs.heading
         && lhs.startingAt == rhs.startingAt
 }
-public class T4Model: Observable {
-    private var board:[[T4Player?]] //x, y
-    
+
+public class T4Model: Observable { //OOP w/o multiple inheritance. Yay!
+    private var board = [T4Point:T4Player]() // Built in dictionary syntax & type inference.
     private(set) var currentPlayer: T4Player
-    public var mousedSquare: T4Point? {
-    willSet {
-        if let definiteValue = newValue {
-            assert(board[definiteValue.x][definiteValue.y] == nil)
-        }
-    }
-    }
     let winLength: Int
+    let width: Int, height: Int
     
     init(width: Int, height: Int, winLength: Int) {
         self.winLength = winLength
-        
-        var board = [[T4Player?]]()
-        for x in 0..<width {
-            board += [T4Player?](count:height, repeatedValue:nil)
-        }
-        self.board = board
-        
+        self.width = width
+        self.height = height
         currentPlayer = T4Player.X
     }
-    var width: Int {
-    get {
-        return board.count
-    }
-    }
-    var height: Int {
-    get{
-       return board[0].count
-    }
-    }
+    
     var coordinates: [T4Point] {
     get{
-        var ret = [T4Point]()
-        for x in 0..<width {
-            for y in 0..<height {
-                ret += (x,y)
-            }
-        }
-        return ret
+        return generatePoints(0..<width, 0..<height)
     }
     }
-    public func getPlayerAt(point: T4Point)-> T4Player? {
-        return board[point.x][point.y]
+    
+    func getPlayerAt(point: T4Point)-> T4Player? {
+        return board[point]
     }
     
     private var oldHits = [T4Line]()
     var hits: [T4Line] {
     get {
+        //make sure that any new hits are appended to the array of existing hits
         var ret = [T4Line]()
-        ret += getHitLines(.X)
+        ret += getHitLines(.X) //infer 
         ret += getHitLines(.O)
         
         for oldLine in oldHits {
-            ret = ret.filter({ !($0 == oldLine) })
+            ret = ret.filter(){ !($0 == oldLine) }
         }
         
         oldHits += ret
@@ -92,7 +91,7 @@ public class T4Model: Observable {
             for direction in INCREASING_UNIT_VECTORS {
                 let line = T4Line(player, coordinate, direction)
                 if isWinningLine(line) {
-                    ret += line
+                    ret += line // No yeild statement. boo!
                 }
             }
         }
@@ -104,14 +103,14 @@ public class T4Model: Observable {
         for d in 0..<winLength {
             let x = line.startingAt.x + d * line.heading.x
             let y = line.startingAt.y + d * line.heading.y
-            ret += (x,y)
+            ret += T4Point(x:x, y:y)
         }
         return ret
     }
 
     func isWinningLine(line: T4Line)-> Bool {
         for p in pointsFromLine(line) {
-            if self.board.qGet(p.x)?.qGet(p.y)? != line.player {
+            if self.board[p]? != line.player {
                 return false
             }
         }
@@ -120,7 +119,7 @@ public class T4Model: Observable {
     
     func move(square: T4Point) {
         assert(getPlayerAt(square) == nil)
-        board[square.x][square.y] = currentPlayer
+        board[square] = currentPlayer
         switch currentPlayer {
         case .X:
             currentPlayer = .O
@@ -133,13 +132,18 @@ public class T4Model: Observable {
 
 //unit vectors that are all strictly increasing in at least 1 dimension
 private func getIncreasingUnitVectors()->[T4Point] {
-    var ret = [T4Point]()
-    for x in -1...1 {
-        for y in -1...1{
-            ret += (x, y)
-        }
-    }
+    var ret = generatePoints(-1...1, -1...1)
     ret = ret.filter { ($0.x == 1 || $0.y == 1) && ($0.x != 1 || $0.y != -1) }
     return ret
 }
 private let INCREASING_UNIT_VECTORS = getIncreasingUnitVectors()
+
+func generatePoints(xRange: Range<Int>, yRange: Range<Int>) -> [T4Point] {
+    var ret = [T4Point]()
+    for x in xRange {
+        for y in yRange {
+            ret += T4Point(x:x, y:y)
+        }
+    }
+    return ret
+}

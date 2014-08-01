@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200D3B00198998FF00CA038D /* TallyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D3AFF198998FF00CA038D /* TallyView.swift */; };
+		200D3B02198AA92500CA038D /* T4LeftArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D3B01198AA92500CA038D /* T4LeftArrow.swift */; };
 		20119B4D197C1607002F70C6 /* T4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20119B4C197C1607002F70C6 /* T4Delegate.swift */; };
 		20119B56197C1607002F70C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20119B54197C1607002F70C6 /* Main.storyboard */; };
 		20119B58197C1607002F70C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20119B57197C1607002F70C6 /* Images.xcassets */; };
 		20119B64197C1608002F70C6 /* T4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20119B63197C1608002F70C6 /* T4Tests.swift */; };
 		20119B6E197C1643002F70C6 /* T4Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20119B6D197C1643002F70C6 /* T4Model.swift */; };
-		203F5914198024F300AB17CF /* T4Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F5911198024F300AB17CF /* T4Scene.swift */; };
 		203F5915198024F300AB17CF /* T4Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F5912198024F300AB17CF /* T4Controller.swift */; };
-		203F59181980505000AB17CF /* T4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F59171980505000AB17CF /* T4View.swift */; };
-		203F591A19805C4C00AB17CF /* T4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F591919805C4C00AB17CF /* T4App.swift */; };
-		203F591C19805C5C00AB17CF /* T4TouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F591B19805C5C00AB17CF /* T4TouchController.swift */; };
+		203F59181980505000AB17CF /* T4BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F59171980505000AB17CF /* T4BoardView.swift */; };
+		203F59611987FF2200AB17CF /* T4PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F59601987FF2200AB17CF /* T4PlayerView.swift */; };
+		203F596619886CD300AB17CF /* T4DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203F596519886CD300AB17CF /* T4DotView.swift */; };
 		2095319519800D2B0045A94D /* T4Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095319419800D2B0045A94D /* T4Utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200D3AFF198998FF00CA038D /* TallyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallyView.swift; sourceTree = "<group>"; };
+		200D3B01198AA92500CA038D /* T4LeftArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4LeftArrow.swift; sourceTree = "<group>"; };
 		20119B47197C1607002F70C6 /* T4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20119B4B197C1607002F70C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20119B4C197C1607002F70C6 /* T4Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T4Delegate.swift; sourceTree = "<group>"; };
@@ -40,11 +43,10 @@
 		20119B62197C1608002F70C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20119B63197C1608002F70C6 /* T4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T4Tests.swift; sourceTree = "<group>"; };
 		20119B6D197C1643002F70C6 /* T4Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Model.swift; sourceTree = "<group>"; };
-		203F5911198024F300AB17CF /* T4Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Scene.swift; sourceTree = "<group>"; };
 		203F5912198024F300AB17CF /* T4Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Controller.swift; sourceTree = "<group>"; };
-		203F59171980505000AB17CF /* T4View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4View.swift; sourceTree = "<group>"; };
-		203F591919805C4C00AB17CF /* T4App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4App.swift; sourceTree = "<group>"; };
-		203F591B19805C5C00AB17CF /* T4TouchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4TouchController.swift; sourceTree = "<group>"; };
+		203F59171980505000AB17CF /* T4BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4BoardView.swift; sourceTree = "<group>"; };
+		203F59601987FF2200AB17CF /* T4PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4PlayerView.swift; sourceTree = "<group>"; };
+		203F596519886CD300AB17CF /* T4DotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4DotView.swift; sourceTree = "<group>"; };
 		2095319419800D2B0045A94D /* T4Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T4Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,12 +89,16 @@
 		20119B49197C1607002F70C6 /* T4 */ = {
 			isa = PBXGroup;
 			children = (
+				203F5912198024F300AB17CF /* T4Controller.swift */,
+				20119B54197C1607002F70C6 /* Main.storyboard */,
 				203F5916198025BB00AB17CF /* boilerplate */,
 				20119B6D197C1643002F70C6 /* T4Model.swift */,
 				2095319419800D2B0045A94D /* T4Utils.swift */,
-				203F59171980505000AB17CF /* T4View.swift */,
-				203F591919805C4C00AB17CF /* T4App.swift */,
-				203F591B19805C5C00AB17CF /* T4TouchController.swift */,
+				203F59171980505000AB17CF /* T4BoardView.swift */,
+				203F59601987FF2200AB17CF /* T4PlayerView.swift */,
+				203F596519886CD300AB17CF /* T4DotView.swift */,
+				200D3AFF198998FF00CA038D /* TallyView.swift */,
+				200D3B01198AA92500CA038D /* T4LeftArrow.swift */,
 			);
 			path = T4;
 			sourceTree = "<group>";
@@ -126,9 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				20119B4C197C1607002F70C6 /* T4Delegate.swift */,
-				203F5911198024F300AB17CF /* T4Scene.swift */,
-				203F5912198024F300AB17CF /* T4Controller.swift */,
-				20119B54197C1607002F70C6 /* Main.storyboard */,
 				20119B57197C1607002F70C6 /* Images.xcassets */,
 				20119B4A197C1607002F70C6 /* Supporting Files */,
 			);
@@ -234,13 +237,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				203F59181980505000AB17CF /* T4View.swift in Sources */,
-				203F591C19805C5C00AB17CF /* T4TouchController.swift in Sources */,
+				200D3B02198AA92500CA038D /* T4LeftArrow.swift in Sources */,
+				203F59181980505000AB17CF /* T4BoardView.swift in Sources */,
 				203F5915198024F300AB17CF /* T4Controller.swift in Sources */,
+				203F596619886CD300AB17CF /* T4DotView.swift in Sources */,
+				200D3B00198998FF00CA038D /* TallyView.swift in Sources */,
 				2095319519800D2B0045A94D /* T4Utils.swift in Sources */,
-				203F591A19805C4C00AB17CF /* T4App.swift in Sources */,
+				203F59611987FF2200AB17CF /* T4PlayerView.swift in Sources */,
 				20119B4D197C1607002F70C6 /* T4Delegate.swift in Sources */,
-				203F5914198024F300AB17CF /* T4Scene.swift in Sources */,
 				20119B6E197C1643002F70C6 /* T4Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
