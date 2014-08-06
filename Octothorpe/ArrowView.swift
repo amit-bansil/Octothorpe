@@ -6,7 +6,7 @@
 
 import UIKit
 
-class LeftArrow: UIView {
+class ArrowView: UIView {
     override func drawRect(rect: CGRect) {
         let bounds = self.bounds
         let pen = UIGraphicsGetCurrentContext()

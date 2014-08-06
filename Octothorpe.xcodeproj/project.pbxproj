@@ -14,7 +14,7 @@
 		200EDC5E1992ABC100C32649 /* OctothorpeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC5D1992ABC100C32649 /* OctothorpeTests.swift */; };
 		200EDC711992AD6700C32649 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC681992AD6600C32649 /* BoardView.swift */; };
 		200EDC731992AD6700C32649 /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6A1992AD6600C32649 /* DotView.swift */; };
-		200EDC741992AD6700C32649 /* LeftArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6B1992AD6600C32649 /* LeftArrow.swift */; };
+		200EDC741992AD6700C32649 /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6B1992AD6600C32649 /* ArrowView.swift */; };
 		200EDC751992AD6700C32649 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6C1992AD6600C32649 /* Model.swift */; };
 		200EDC761992AD6700C32649 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6D1992AD6600C32649 /* PlayerView.swift */; };
 		200EDC771992AD6700C32649 /* TallyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6E1992AD6600C32649 /* TallyView.swift */; };
@@ -43,7 +43,7 @@
 		200EDC5D1992ABC100C32649 /* OctothorpeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctothorpeTests.swift; sourceTree = "<group>"; };
 		200EDC681992AD6600C32649 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		200EDC6A1992AD6600C32649 /* DotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
-		200EDC6B1992AD6600C32649 /* LeftArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftArrow.swift; sourceTree = "<group>"; };
+		200EDC6B1992AD6600C32649 /* ArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		200EDC6C1992AD6600C32649 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		200EDC6D1992AD6600C32649 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		200EDC6E1992AD6600C32649 /* TallyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallyView.swift; sourceTree = "<group>"; };
@@ -89,16 +89,16 @@
 		200EDC471992ABC100C32649 /* Octothorpe */ = {
 			isa = PBXGroup;
 			children = (
-				200EDC4A1992ABC100C32649 /* AppDelegate.swift */,
-				200EDC4C1992ABC100C32649 /* ViewController.swift */,
+				200EDC6C1992AD6600C32649 /* Model.swift */,
 				200EDC4E1992ABC100C32649 /* Main.storyboard */,
+				200EDC4C1992ABC100C32649 /* ViewController.swift */,
 				200EDC681992AD6600C32649 /* BoardView.swift */,
 				200EDC6A1992AD6600C32649 /* DotView.swift */,
-				200EDC6B1992AD6600C32649 /* LeftArrow.swift */,
-				200EDC6C1992AD6600C32649 /* Model.swift */,
+				200EDC6B1992AD6600C32649 /* ArrowView.swift */,
 				200EDC6D1992AD6600C32649 /* PlayerView.swift */,
 				200EDC6E1992AD6600C32649 /* TallyView.swift */,
 				200EDC6F1992AD6700C32649 /* Utils.swift */,
+				200EDC4A1992ABC100C32649 /* AppDelegate.swift */,
 				200EDC511992ABC100C32649 /* Images.xcassets */,
 				200EDC481992ABC100C32649 /* Supporting Files */,
 			);
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				200EDC761992AD6700C32649 /* PlayerView.swift in Sources */,
-				200EDC741992AD6700C32649 /* LeftArrow.swift in Sources */,
+				200EDC741992AD6700C32649 /* ArrowView.swift in Sources */,
 				200EDC731992AD6700C32649 /* DotView.swift in Sources */,
 				200EDC711992AD6700C32649 /* BoardView.swift in Sources */,
 				200EDC4D1992ABC100C32649 /* ViewController.swift in Sources */,

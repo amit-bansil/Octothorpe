@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var leftPlayer: PlayerView!
     @IBOutlet weak var leftTally: TallyView!
     @IBOutlet weak var rightTally: TallyView!
-    @IBOutlet weak var arrow: LeftArrow!
+    @IBOutlet weak var arrow: ArrowView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
