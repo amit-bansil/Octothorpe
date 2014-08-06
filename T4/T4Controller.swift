@@ -1,25 +1,22 @@
 //
-//  GameViewController.swift
-//  test
-//
 //  Created by Amit D. Bansil on 7/23/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
 import UIKit
 
-class T4ViewController: UIViewController {
-    let model = T4Model(width: 5, height: 5, winLength: 3)
-    var currentPlayer:T4Player = .X
+class ViewController: UIViewController {
+    let model = Model(width: 5, height: 5, winLength: 3)
+    var currentPlayer:Player = .X
     
     @IBOutlet weak var directions: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
-    @IBOutlet weak var board: T4BoardView!
-    @IBOutlet weak var rightPlayer: T4PlayerView!
-    @IBOutlet weak var leftPlayer: T4PlayerView!
+    @IBOutlet weak var board: BoardView!
+    @IBOutlet weak var rightPlayer: PlayerView!
+    @IBOutlet weak var leftPlayer: PlayerView!
     @IBOutlet weak var leftTally: TallyView!
     @IBOutlet weak var rightTally: TallyView!
-    @IBOutlet weak var arrow: T4LeftArrow!
+    @IBOutlet weak var arrow: LeftArrow!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +25,7 @@ class T4ViewController: UIViewController {
         rightPlayer.player = .O
         leftPlayer.player = .X
         
-        T4BoardView()
+        BoardView()
         board.model = model
         newGameButton.hidden = true
         model.addListener(self.modelUpdated)

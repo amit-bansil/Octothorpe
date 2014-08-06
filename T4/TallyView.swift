@@ -1,6 +1,5 @@
 //
 //  TallyView.swift
-//  T4
 //
 //  Created by Amit D. Bansil on 7/30/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
@@ -14,7 +13,7 @@ class TallyView: UIView {
         setNeedsDisplay()
     }
     }
-    var player: T4Player?
+    var player: Player?
     
     override func drawRect(rect: CGRect)  {
         let pen = UIGraphicsGetCurrentContext()

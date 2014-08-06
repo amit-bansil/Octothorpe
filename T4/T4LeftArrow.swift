@@ -1,6 +1,4 @@
 //
-//  T4MoveIndiciator.swift
-//  T4
 //
 //  Created by Amit D. Bansil on 7/31/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
@@ -8,7 +6,7 @@
 
 import UIKit
 
-class T4LeftArrow: UIView {
+class LeftArrow: UIView {
     override func drawRect(rect: CGRect) {
         let bounds = self.bounds
         let pen = UIGraphicsGetCurrentContext()

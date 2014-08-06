@@ -1,6 +1,5 @@
 //
-//  T4Tests.swift
-//  T4Tests
+//  Tests.swift
 //
 //  Created by Amit D. Bansil on 7/20/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
@@ -9,7 +8,7 @@
 import UIKit
 import XCTest
 
-class T4Tests: XCTestCase {
+class Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()

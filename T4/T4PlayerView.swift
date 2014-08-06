@@ -1,6 +1,5 @@
 //
-//  T4PlayerView.swift
-//  T4
+//  PlayerView.swift
 //
 //  Created by Amit D. Bansil on 7/29/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
@@ -8,8 +7,8 @@
 
 import UIKit
 
-class T4PlayerView: UIView {
-    var player: T4Player?
+class PlayerView: UIView {
+    var player: Player?
     
     override func drawRect(rect: CGRect) {
         let pen = UIGraphicsGetCurrentContext()

@@ -1,6 +1,6 @@
 //
-//  T4View.swift
-//  T4
+//  View.swift
+//  
 //
 //  Created by Amit D. Bansil on 7/23/14.
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-class T4BoardView: UIView {
-    var model: T4Model?
-    var board = [[T4PlayerView]]()
+class BoardView: UIView {
+    var model: Model?
+    var board = [[PlayerView]]()
     var pointCount = 0
     
     override func layoutSubviews() {
         if let model = self.model {
             if(board.count == 0){
                 for column in 0..<model.width {
-                    board += [T4PlayerView]()
+                    board += [PlayerView]()
                     for row in 0..<model.height {
-                        let cell = T4PlayerView()
+                        let cell = PlayerView()
                         cell.backgroundColor = UIColor.clearColor()
                         cell.addGestureRecognizer(UITapGestureRecognizzle() {
-                            let coords = T4Point(x:column, y:row)
+                            let coords = Point(x:column, y:row)
                             if !model.getPlayerAt(coords) {
                                 model.move(coords)
                                 dropIn(cell, 0)
@@ -57,7 +57,7 @@ class T4BoardView: UIView {
 
         }
     }
-    func drawLine(line: T4Line) {
+    func drawLine(line: Line) {
         if let model = self.model {
             let w = bounds.width / CGFloat(model.width)
             let h = bounds.height / CGFloat(model.height)
@@ -72,11 +72,11 @@ class T4BoardView: UIView {
             }
         }
     }
-    typealias Point = (x: CGFloat, y: CGFloat)
-    func drawPoint(player:T4Player, start:Point, end:Point, delta:CGFloat, delay: NSTimeInterval){
+    typealias CGPoint = (x: CGFloat, y: CGFloat)
+    func drawPoint(player:Player, start:CGPoint, end:CGPoint, delta:CGFloat, delay: NSTimeInterval){
         let w = CGFloat(5.0), h = CGFloat(5.0)
         let p = (start.x + (end.x - start.x) * delta, start.y + (end.y - start.y) * delta)
-        let v = T4DotView(frame:CGRect(x:p.0 - w / 2.0, y: p.1 - h / 2.0, width: w, height: h), player:player)
+        let v = DotView(frame:CGRect(x:p.0 - w / 2.0, y: p.1 - h / 2.0, width: w, height: h), player:player)
         addSubview(v)
         dropIn(v, delay)
     }
