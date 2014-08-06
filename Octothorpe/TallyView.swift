@@ -7,6 +7,7 @@
 
 import UIKit
 
+//represents a number as a tally of tick marks centered on the X Axis
 class TallyView: UIView {
     var tally: Int = 0 {
     didSet {
@@ -18,15 +19,8 @@ class TallyView: UIView {
     override func drawRect(rect: CGRect)  {
         let pen = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(pen, 3)
-        CGContextSetLineCap(pen, kCGLineCapSquare)
-        switch player {
-        case .Some(.X):
-            UIColor.fromHex(0xE35050).set()
-        case .Some(.O):
-            UIColor.fromHex(0x50E3C2).set()
-        default:
-            return
-        }
+        CGContextSetLineCap(pen, TALLY_LINE_CAP)
+        colorForPlayer(player).set()
         
         let bounds = self.bounds
         let markGap = CGFloat(5)
@@ -37,7 +31,7 @@ class TallyView: UIView {
         totalWidth += (max(groupCount - 1, 0) * (groupGap + slashHang))
         
         var x0 = bounds.width / 2.0 - totalWidth / 2.0
-        x0 += 1.5 //width of line?
+        x0 += 1.5 //width of line
         var tallyDrawn = 0
         
         for _ in 0...Int(groupCount) {

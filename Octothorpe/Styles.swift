@@ -11,6 +11,20 @@ import UIKit
 let ARROW_COLOR = UIColor.fromHex(0xd0d0d0)
 let ARROW_LINE_CAP = kCGLineCapSquare
 
+let TALLY_LINE_CAP = kCGLineCapSquare
+
+func colorForPlayer(player: Player?)-> UIColor {
+    switch player {
+    case .Some(.X):
+        return UIColor.fromHex(0xE35050)
+    case .Some(.O):
+        return UIColor.fromHex(0x50E3C2)
+    default:
+        return UIColor.whiteColor()
+    }
+}
+
+
 func styleDirections(directions: UILabel) {
     let heading = "Playing Octothorpe"
     let body = ": Grab a friend and take turns tapping the dots above. Whoever has the most lines of three when the board is full wins."
