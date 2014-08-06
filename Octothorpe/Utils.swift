@@ -7,43 +7,6 @@
 
 import SpriteKit
 
-//lookup possibly out of bounds element of array
-public extension Array {
-    public func qGet(index: Int)-> T?{
-        if index < 0 || index >= count {
-            return nil
-        }else{
-            return self[index]
-        }
-    }
-    mutating func remove <U: Equatable> (element: U) {
-        let anotherSelf = self
-        
-        removeAll(keepCapacity: true)
-        
-        anotherSelf.each {
-            (index: Int, current: Element) in
-            if current as U != element {
-                self.append(current)
-            }
-        }
-    }
-    func each (call: (Element) -> ()) {
-        
-        for item in self {
-            call(item)
-        }
-        
-    }
-    func each (call: (Int, Element) -> ()) {
-        
-        for (index, item) in enumerate(self) {
-            call(index, item)
-        }
-        
-    }
-}
-
 public class Observable {
     public typealias Listener = ()->()
     //Memory leak??
