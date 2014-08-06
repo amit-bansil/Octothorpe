@@ -20,7 +20,7 @@ func colorForPlayer(player: Player?)-> UIColor {
     case .Some(.O):
         return UIColor.fromHex(0x50E3C2)
     default:
-        return UIColor.whiteColor()
+        return UIColor.fromHex(0xDDDDDD)
     }
 }
 
