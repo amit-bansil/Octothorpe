@@ -8,6 +8,8 @@
 
 import UIKit
 
+let ARROW_COLOR = UIColor.fromHex(0xd0d0d0)
+let ARROW_LINE_CAP = kCGLineCapSquare
 
 func styleDirections(directions: UILabel) {
     let heading = "Playing Octothorpe"

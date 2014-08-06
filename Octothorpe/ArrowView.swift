@@ -6,12 +6,13 @@
 
 import UIKit
 
+//draws a left facing arrow head
 class ArrowView: UIView {
     override func drawRect(rect: CGRect) {
         let bounds = self.bounds
         let pen = UIGraphicsGetCurrentContext()
-        CGContextSetLineCap(pen, kCGLineCapSquare)
-        UIColor.fromHex(0xd0d0d0).set()
+        CGContextSetLineCap(pen, ARROW_LINE_CAP)
+        ARROW_COLOR.set()
         CGContextMoveToPoint(pen, bounds.maxX,bounds.minY)
         CGContextAddLineToPoint(pen, bounds.maxX,bounds.maxY)
         CGContextAddLineToPoint(pen, bounds.minX,bounds.midY)
