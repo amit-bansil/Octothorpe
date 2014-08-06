@@ -5,46 +5,10 @@
 //  Copyright (c) 2014 Amit D. Bansil. All rights reserved.
 //
 
-//Enumerations, Yay!
-public enum Player {
-    case X, O
-}
-
-//Structs are copied whenever passed rather than being passed by reference
-public struct Point: Hashable{
-    //let defines a constant and is the preferred way of naming a value instead of var
-    let x: Int, y: Int
-    init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
-    }
-    
-    func destructure()-> (x: Int, y: Int) { //built in tuple type. Yay!
-        return (x, y)
-    }
-    
-    public var hashValue: Int {
-    get{
-        return 31 &* x &+ y // overflow-tastic (arithmetic is checked by default. yay!)
-    }
-    }
-}
-//type alias's make tuples more useful
-public typealias Line = (player: Player, startingAt: Point, heading: Point)
-
-//operator overloading. Yay!
-public func==(lhs: Point, rhs:Point)-> Bool{
-    return lhs.x == rhs.x && lhs.y == rhs.y
-}
-
-public func==(lhs: Line, rhs:Line)-> Bool{
-    return lhs.player == rhs.player
-        && lhs.heading == rhs.heading
-        && lhs.startingAt == rhs.startingAt
-}
-
+//describes buisness logic of game in isolation from any rendering/interactivity
 public class Model: Observable { //OOP w/o multiple inheritance. Yay!
-    private var board = [Point:Player]() // Built in dictionary syntax & type inference.
+    private var board = [Point:Player]()
+    //player whose move it is next
     private(set) var currentPlayer: Player
     let winLength: Int
     let width: Int, height: Int
@@ -53,25 +17,29 @@ public class Model: Observable { //OOP w/o multiple inheritance. Yay!
         self.winLength = winLength
         self.width = width
         self.height = height
-        currentPlayer = Player.X
+        currentPlayer = .X
     }
     
+    // return all coordinates on board
     var coordinates: [Point] {
     get{
         return generatePoints(0..<width, 0..<height)
     }
     }
     
+    //return player (if any) who owns a given square
     func getPlayerAt(point: Point)-> Player? {
         return board[point]
     }
     
     private var oldHits = [Line]()
+    //return all lines that count as points
+    //any new hits are always appended to the array so the view
+    //can detect changes
     var hits: [Line] {
     get {
-        //make sure that any new hits are appended to the array of existing hits
         var ret = [Line]()
-        ret += getHitLines(.X) //infer 
+        ret += getHitLines(.X)
         ret += getHitLines(.O)
         
         for oldLine in oldHits {
@@ -84,30 +52,21 @@ public class Model: Observable { //OOP w/o multiple inheritance. Yay!
     }
     }
     
+    //return hits for a specific player
     func getHitLines(player: Player)-> [(Line)]{
         var ret = [(Line)]()
         for coordinate in coordinates {
             for direction in INCREASING_UNIT_VECTORS {
-                let line = Line(player, coordinate, direction)
-                if isWinningLine(line) {
+                let line = Line(player, coordinate, direction, winLength)
+                if isHit(line) {
                     ret.append(line) // No yeild statement. boo!
                 }
             }
         }
         return ret
     }
-    
-    public func pointsFromLine(line: Line)-> [Point] {
-        var ret = [Point]()
-        for d in 0..<winLength {
-            let x = line.startingAt.x + d * line.heading.x
-            let y = line.startingAt.y + d * line.heading.y
-            ret.append(Point(x:x, y:y))
-        }
-        return ret
-    }
 
-    func isWinningLine(line: Line)-> Bool {
+    private func isHit(line: Line)-> Bool {
         for p in pointsFromLine(line) {
             if self.board[p]? != line.player {
                 return false
@@ -127,6 +86,52 @@ public class Model: Observable { //OOP w/o multiple inheritance. Yay!
         }
         dispatchEvent()
     }
+}
+
+
+public enum Player {
+    case X, O
+}
+
+public struct Point: Hashable{
+    let x: Int, y: Int
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
+    
+    func destructure()-> (x: Int, y: Int) {
+        return (x, y)
+    }
+    
+    public var hashValue: Int {
+        get{
+            return 31 &* x &+ y
+        }
+    }
+}
+
+//Line of points
+public typealias Line = (player: Player, startingAt: Point, heading: Point, steps: Int)
+
+public func pointsFromLine(line: Line)-> [Point] {
+    var ret = [Point]()
+    for d in 0..<line.steps {
+        let x = line.startingAt.x + d * line.heading.x
+        let y = line.startingAt.y + d * line.heading.y
+        ret.append(Point(x:x, y:y))
+    }
+    return ret
+}
+
+public func==(lhs: Point, rhs:Point)-> Bool{
+    return lhs.x == rhs.x && lhs.y == rhs.y
+}
+
+public func==(lhs: Line, rhs:Line)-> Bool{
+    return lhs.player == rhs.player
+        && lhs.heading == rhs.heading
+        && lhs.startingAt == rhs.startingAt
 }
 
 //unit vectors that are all strictly increasing in at least 1 dimension

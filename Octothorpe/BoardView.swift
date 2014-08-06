@@ -61,7 +61,7 @@ class BoardView: UIView {
         if let model = self.model {
             let w = bounds.width / CGFloat(model.width)
             let h = bounds.height / CGFloat(model.height)
-            let points = model.pointsFromLine(line)
+            let points = pointsFromLine(line)
             for i in 0..<points.count - 1 {
                 let (x0, y0) = points[i].destructure()
                 let (x1, y1) = points[i+1].destructure()
