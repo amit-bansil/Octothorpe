@@ -9,54 +9,81 @@
 import UIKit
 
 class BoardView: UIView {
-    var model: Model?
-    var board = [[PlayerView]]()
+    var model: Model? {
+        didSet{
+            //Memory leak!
+            model?.addListener(modelChanged)
+        }
+    }
+    var board = [Point:PlayerView]()
     var pointCount = 0
     
     override func layoutSubviews() {
-        if let model = self.model {
+        if self.model != nil {
             if(board.count == 0){
-                for column in 0..<model.width {
-                    board.append([PlayerView]())
-                    for row in 0..<model.height {
-                        let cell = PlayerView()
-                        cell.backgroundColor = UIColor.clearColor()
-                        cell.addGestureRecognizer(UITapGestureRecognizzle() {
-                            let coords = Point(x:column, y:row)
-                            if model.getPlayerAt(coords) == nil {
-                                model.move(coords)
-                                dropIn(cell, 0)
-                                cell.player = model.getPlayerAt(coords)
-                                cell.setNeedsDisplay()
-                                self.bringSubviewToFront(cell)
-                                let lines = model.hits
-                                for line in lines[self.pointCount..<lines.count] {
-                                    self.drawLine(line)
-                                }
-                                self.pointCount = lines.count
-                            }
-                        })
-                        addSubview(cell)
-                        board[column].append(cell)
-                    }
-                }
+                setupBoard()
+                
             }
             
-            let bounds = self.bounds
-            let w = bounds.width / CGFloat(model.width)
-            let h = bounds.height / CGFloat(model.height)
-            for column in 0..<model.width {
-                for row in 0..<model.height {
-                    board[column][row].frame = CGRect(
-                        x:CGFloat(column) * w + bounds.minX,
-                        y:CGFloat(row) * h + bounds.minY,
-                        width:w,
-                        height:h)
-                }
-            }
-
+            layoutBoard()
         }
     }
+    
+    func setupBoard() {
+        let model = self.model!
+        for point in model.coordinates {
+            let cell = PlayerView()
+            cell.backgroundColor = UIColor.clearColor()
+            cell.addGestureRecognizer(UITapGestureRecognizzle() {
+                self.cellTapped(point)
+            })
+            addSubview(cell)
+            board[point] = cell
+        }
+    }
+    
+    func layoutBoard() {
+        let model = self.model!
+        let bounds = self.bounds
+        let w = bounds.width / CGFloat(model.width)
+        let h = bounds.height / CGFloat(model.height)
+        for point in model.coordinates {
+            board[point]!.frame = CGRect(
+                x:CGFloat(point.x) * w + bounds.minX,
+                y:CGFloat(point.y) * h + bounds.minY,
+                width:w,
+                height:h)
+        }
+    }
+    
+    func cellTapped(point: Point) {
+        let model = self.model!
+        if model.getPlayerAt(point) == nil {
+            model.move(point)
+        } else {
+            //TODO: bounce cell
+        }
+    }
+    
+    func modelChanged() {
+        let model = self.model!
+        for point in model.coordinates {
+            if model.getPlayerAt(point) != board[point]!.player {
+                let cell = board[point]!
+                dropIn(cell, 0)
+                cell.player = model.getPlayerAt(point)
+                cell.setNeedsDisplay()
+                self.bringSubviewToFront(cell)
+            }
+        }
+        
+        let lines = model.hits
+        for line in lines[self.pointCount..<lines.count] {
+            self.drawLine(line)
+        }
+        self.pointCount = lines.count
+    }
+    
     func drawLine(line: Line) {
         if let model = self.model {
             let w = bounds.width / CGFloat(model.width)
