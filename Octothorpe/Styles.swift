@@ -24,8 +24,13 @@ let OStrokeWidth      = CGFloat(10)
 let XInset            = CGFloat(18)
 let XStrokeWidth      = CGFloat(10)
 
-let DotInset          = CGFloat(28)
-let DotStrokeWidth    = CGFloat(5)
+//dots used to indicate hits
+let HitDotInset       = CGFloat(28)
+let HitDotStrokeWidth = CGFloat(5)
+
+//dots used to indicate
+let OpenSquareDotSize = CGFloat(5.0)
+
 
 func colorForPlayer(player: Player?)-> UIColor {
     switch player {

@@ -65,18 +65,22 @@ class BoardView: UIView {
             for i in 0..<points.count - 1 {
                 let (x0, y0) = points[i].destructure()
                 let (x1, y1) = points[i+1].destructure()
-                let start = ((CGFloat(x0) + 0.5) * w, (CGFloat(y0) + 0.5) * h)
-                let end = ((CGFloat(x1) + 0.5) * w, (CGFloat(y1) + 0.5) * h)
-                drawPoint(line.player, start:start, end:end, delta:0.42, delay:Double(i) * 0.3)
-                drawPoint(line.player, start:start, end:end, delta:0.58, delay:Double(i) * 0.3 + 0.2)
+                let start = CGPoint(x:(CGFloat(x0) + 0.5) * w, y:(CGFloat(y0) + 0.5) * h)
+                let end = CGPoint(x:(CGFloat(x1) + 0.5) * w, y:(CGFloat(y1) + 0.5) * h)
+                drawPoint(line.player, start:start, end:end,
+                    delta:0.42, delay:Double(i) * 0.3)
+                drawPoint(line.player, start:start, end:end,
+                    delta:0.58, delay:Double(i) * 0.3 + 0.2)
             }
         }
     }
-    typealias CGPoint = (x: CGFloat, y: CGFloat)
-    func drawPoint(player:Player, start:CGPoint, end:CGPoint, delta:CGFloat, delay: NSTimeInterval){
-        let w = CGFloat(5.0), h = CGFloat(5.0)
-        let p = (start.x + (end.x - start.x) * delta, start.y + (end.y - start.y) * delta)
-        let v = DotView(frame:CGRect(x:p.0 - w / 2.0, y: p.1 - h / 2.0, width: w, height: h), player:player)
+    
+    func drawPoint(player: Player, start: CGPoint, end: CGPoint,
+                   delta: Double, delay: NSTimeInterval){
+        let size   = CGSize(width:OpenSquareDotSize, height:OpenSquareDotSize)
+        var origin = start.moveToward(end, amount: delta)
+        origin = origin - 0.5 * CGPoint(x: OpenSquareDotSize, y: OpenSquareDotSize)
+        let v = DotView(frame:CGRect(origin: origin, size: size), player:player)
         addSubview(v)
         dropIn(v, delay)
     }
@@ -127,8 +131,8 @@ class PlayerView: UIView {
     func drawDot() {
         let pen = UIGraphicsGetCurrentContext()
         
-        CGContextSetLineWidth(pen, DotStrokeWidth)
-        CGContextFillEllipseInRect(pen, CGRectInset(self.bounds, DotInset, DotInset))
+        CGContextSetLineWidth(pen, HitDotStrokeWidth)
+        CGContextFillEllipseInRect(pen, CGRectInset(self.bounds, HitDotInset, HitDotInset))
     }
 }
 
