@@ -90,7 +90,7 @@ public class Model: Observable { //OOP w/o multiple inheritance. Yay!
             for direction in INCREASING_UNIT_VECTORS {
                 let line = Line(player, coordinate, direction)
                 if isWinningLine(line) {
-                    ret += line // No yeild statement. boo!
+                    ret.append(line) // No yeild statement. boo!
                 }
             }
         }
@@ -102,7 +102,7 @@ public class Model: Observable { //OOP w/o multiple inheritance. Yay!
         for d in 0..<winLength {
             let x = line.startingAt.x + d * line.heading.x
             let y = line.startingAt.y + d * line.heading.y
-            ret += Point(x:x, y:y)
+            ret.append(Point(x:x, y:y))
         }
         return ret
     }
@@ -141,7 +141,7 @@ func generatePoints(xRange: Range<Int>, yRange: Range<Int>) -> [Point] {
     var ret = [Point]()
     for x in xRange {
         for y in yRange {
-            ret += Point(x:x, y:y)
+            ret.append(Point(x:x, y:y))
         }
     }
     return ret

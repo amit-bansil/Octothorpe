@@ -50,7 +50,7 @@ public class Observable {
     private var listeners = [Listener]()
     
     public func addListener(listener: Listener){
-        listeners += listener
+        listeners.append(listener)
     }
     func dispatchEvent(){
         for listener in listeners {

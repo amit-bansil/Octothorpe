@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20119B46197C1607002F70C6"
-               BuildableName = "T4.app"
-               BlueprintName = "T4"
-               ReferencedContainer = "container:T4.xcodeproj">
+               BlueprintIdentifier = "200EDC441992ABC100C32649"
+               BuildableName = "Octothorpe.app"
+               BlueprintName = "Octothorpe"
+               ReferencedContainer = "container:Octothorpe.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "200EDC561992ABC100C32649"
+               BuildableName = "OctothorpeTests.xctest"
+               BlueprintName = "OctothorpeTests"
+               ReferencedContainer = "container:Octothorpe.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20119B5C197C1607002F70C6"
-               BuildableName = "T4Tests.xctest"
-               BlueprintName = "T4Tests"
-               ReferencedContainer = "container:T4.xcodeproj">
+               BlueprintIdentifier = "200EDC561992ABC100C32649"
+               BuildableName = "OctothorpeTests.xctest"
+               BlueprintName = "OctothorpeTests"
+               ReferencedContainer = "container:Octothorpe.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20119B46197C1607002F70C6"
-            BuildableName = "T4.app"
-            BlueprintName = "T4"
-            ReferencedContainer = "container:T4.xcodeproj">
+            BlueprintIdentifier = "200EDC441992ABC100C32649"
+            BuildableName = "Octothorpe.app"
+            BlueprintName = "Octothorpe"
+            ReferencedContainer = "container:Octothorpe.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -61,10 +75,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20119B46197C1607002F70C6"
-            BuildableName = "T4.app"
-            BlueprintName = "T4"
-            ReferencedContainer = "container:T4.xcodeproj">
+            BlueprintIdentifier = "200EDC441992ABC100C32649"
+            BuildableName = "Octothorpe.app"
+            BlueprintName = "Octothorpe"
+            ReferencedContainer = "container:Octothorpe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,10 +93,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20119B46197C1607002F70C6"
-            BuildableName = "T4.app"
-            BlueprintName = "T4"
-            ReferencedContainer = "container:T4.xcodeproj">
+            BlueprintIdentifier = "200EDC441992ABC100C32649"
+            BuildableName = "Octothorpe.app"
+            BlueprintName = "Octothorpe"
+            ReferencedContainer = "container:Octothorpe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

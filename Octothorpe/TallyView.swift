@@ -40,7 +40,7 @@ class TallyView: UIView {
         x0 += 1.5 //width of line?
         var tallyDrawn = 0
         
-        for _ in 0...groupCount {
+        for _ in 0...Int(groupCount) {
             let tallyStart = x0
             for i in 0..<5 {
                 if tallyDrawn == tally {

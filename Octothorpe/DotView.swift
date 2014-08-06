@@ -8,6 +8,10 @@
 import UIKit
 
 class DotView: UIView{
+    required init(coder aDecoder: NSCoder!) {
+        fatalError("NSCoding not supported")
+    }
+    
     var player: Player
     init(frame: CGRect, player: Player) {
         self.player = player

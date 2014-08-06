@@ -17,13 +17,13 @@ class BoardView: UIView {
         if let model = self.model {
             if(board.count == 0){
                 for column in 0..<model.width {
-                    board += [PlayerView]()
+                    board.append([PlayerView]())
                     for row in 0..<model.height {
                         let cell = PlayerView()
                         cell.backgroundColor = UIColor.clearColor()
                         cell.addGestureRecognizer(UITapGestureRecognizzle() {
                             let coords = Point(x:column, y:row)
-                            if !model.getPlayerAt(coords) {
+                            if model.getPlayerAt(coords) == nil {
                                 model.move(coords)
                                 dropIn(cell, 0)
                                 cell.player = model.getPlayerAt(coords)
@@ -37,7 +37,7 @@ class BoardView: UIView {
                             }
                         })
                         addSubview(cell)
-                        board[column] += cell
+                        board[column].append(cell)
                     }
                 }
             }
