@@ -87,8 +87,6 @@ class PlayerView: UIView {
     var player: Player?
     
     override func drawRect(rect: CGRect) {
-        let pen = UIGraphicsGetCurrentContext()
-        var bounds = self.bounds
         //fix for self.bounds occasionaly returning incorrect values
         if(self.bounds.width != frame.width) {
             NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("setNeedsDisplay"), userInfo: nil, repeats: false)
@@ -97,23 +95,40 @@ class PlayerView: UIView {
         colorForPlayer(player).set()
         switch player {
         case .Some(.X):
-            CGContextSetLineWidth(pen, 10)
-            CGContextSetLineCap(pen, kCGLineCapSquare)
-            bounds = CGRectInset(bounds, 18, 18)
-            CGContextMoveToPoint(pen, bounds.minX, bounds.minY)
-            CGContextAddLineToPoint(pen, bounds.maxX, bounds.maxY)
-            CGContextMoveToPoint(pen, bounds.minX, bounds.maxY)
-            CGContextAddLineToPoint(pen, bounds.maxX, bounds.minY)
-            CGContextStrokePath(pen)
+            drawX()
         case .Some(.O):
-            CGContextSetLineWidth(pen, 10)
-            bounds = CGRectInset(bounds, 15, 15)
-            CGContextAddArc(pen, bounds.midX, bounds.midY, bounds.width / 2.0, 0.0, CGFloat(M_PI) * 2.0, 1)
-            CGContextStrokePath(pen)
+            drawO()
         default:
-            CGContextSetLineWidth(pen, 5)
-            CGContextFillEllipseInRect(pen, CGRectInset(bounds, 28, 28))
+            drawDot()
         }
+    }
+    func drawX() {
+        let pen = UIGraphicsGetCurrentContext()
+        var bounds = self.bounds
+        
+        CGContextSetLineWidth(pen, XStrokeWidth)
+        CGContextSetLineCap(pen, kCGLineCapSquare)
+        bounds = CGRectInset(bounds, XInset, XInset)
+        CGContextMoveToPoint(pen, bounds.minX, bounds.minY)
+        CGContextAddLineToPoint(pen, bounds.maxX, bounds.maxY)
+        CGContextMoveToPoint(pen, bounds.minX, bounds.maxY)
+        CGContextAddLineToPoint(pen, bounds.maxX, bounds.minY)
+        CGContextStrokePath(pen)
+    }
+    func drawO() {
+        let pen = UIGraphicsGetCurrentContext()
+        var bounds = self.bounds
+        
+        CGContextSetLineWidth(pen, OStrokeWidth)
+        bounds = CGRectInset(bounds, OInset, OInset)
+        CGContextAddArc(pen, bounds.midX, bounds.midY, bounds.width / 2.0, 0.0, CGFloat(M_PI) * 2.0, 1)
+        CGContextStrokePath(pen)
+    }
+    func drawDot() {
+        let pen = UIGraphicsGetCurrentContext()
+        
+        CGContextSetLineWidth(pen, DotStrokeWidth)
+        CGContextFillEllipseInRect(pen, CGRectInset(self.bounds, DotInset, DotInset))
     }
 }
 
@@ -122,8 +137,8 @@ class ArrowView: UIView {
     override func drawRect(rect: CGRect) {
         let bounds = self.bounds
         let pen = UIGraphicsGetCurrentContext()
-        CGContextSetLineCap(pen, ARROW_LINE_CAP)
-        ARROW_COLOR.set()
+        CGContextSetLineCap(pen, ArrowLineCap)
+        ArrowColor.set()
         CGContextMoveToPoint(pen, bounds.maxX,bounds.minY)
         CGContextAddLineToPoint(pen, bounds.maxX,bounds.maxY)
         CGContextAddLineToPoint(pen, bounds.minX,bounds.midY)
@@ -144,19 +159,17 @@ class TallyView: UIView {
     override func drawRect(rect: CGRect)  {
         let pen = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(pen, 3)
-        CGContextSetLineCap(pen, TALLY_LINE_CAP)
+        CGContextSetLineCap(pen, TallyLineCap)
         colorForPlayer(player).set()
         
         let bounds = self.bounds
-        let markGap = CGFloat(5)
-        let slashHang = CGFloat(3)
-        let groupGap = CGFloat(2)
         let groupCount = CGFloat(floor(CGFloat(tally) / 5.0))
-        var totalWidth = (CGFloat(tally) - groupCount) * markGap
-        totalWidth += (max(groupCount - 1, 0) * (groupGap + slashHang))
+        
+        var totalWidth = (CGFloat(tally) - groupCount) * TallyMarkGap
+        totalWidth += (max(groupCount - 1, 0) * (TallyGroupGap + TallySlashHang))
+        totalWidth -= 3.0 //width of line
         
         var x0 = bounds.width / 2.0 - totalWidth / 2.0
-        x0 += 1.5 //width of line
         var tallyDrawn = 0
         
         for _ in 0...Int(groupCount) {
@@ -169,15 +182,17 @@ class TallyView: UIView {
                 if i != 4 {
                     CGContextMoveToPoint(pen, x0, bounds.minY)
                     CGContextAddLineToPoint(pen, x0, bounds.maxY)
-                    x0 += markGap
+                    x0 += TallyMarkGap
                 } else {
-                    CGContextMoveToPoint(pen, tallyStart - markGap, bounds.maxY - 5.0)
-                    CGContextAddLineToPoint(pen, x0, bounds.minY + 5.0)
+                    CGContextMoveToPoint(pen, tallyStart - TallyMarkGap,
+                        bounds.maxY - TallySlashYOffset)
+                    CGContextAddLineToPoint(pen, x0,
+                        bounds.minY + TallySlashYOffset)
                 }
                 ++tallyDrawn
             }
-            x0 += groupGap
-            x0 += slashHang
+            x0 += TallyGroupGap
+            x0 += TallySlashHang
         }
     }
 }

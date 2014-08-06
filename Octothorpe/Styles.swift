@@ -8,10 +8,24 @@
 
 import UIKit
 
-let ARROW_COLOR = UIColor.fromHex(0xd0d0d0)
-let ARROW_LINE_CAP = kCGLineCapSquare
+let ArrowColor        = UIColor.fromHex(0xd0d0d0)
+let ArrowLineCap      = kCGLineCapSquare
 
-let TALLY_LINE_CAP = kCGLineCapSquare
+let TallyLineCap      = kCGLineCapSquare
+
+let TallySlashYOffset = CGFloat(5.0)
+let TallyMarkGap      = CGFloat(5)
+let TallySlashHang    = CGFloat(3)
+let TallyGroupGap     = CGFloat(2)
+
+let OInset            = CGFloat(15)
+let OStrokeWidth      = CGFloat(10)
+
+let XInset            = CGFloat(18)
+let XStrokeWidth      = CGFloat(10)
+
+let DotInset          = CGFloat(28)
+let DotStrokeWidth    = CGFloat(5)
 
 func colorForPlayer(player: Player?)-> UIColor {
     switch player {
