@@ -81,17 +81,3 @@ class BoardView: UIView {
         dropIn(v, delay)
     }
 }
-
-class UITapGestureRecognizzle : UITapGestureRecognizer {
-    var target : () -> ()
-    
-    init(target: () -> ()) {
-        self.target = target
-        
-        super.init(target: self, action: "invokeTarget:")
-    }
-    
-    func invokeTarget(nizer: UITapGestureRecognizer!) {
-        target()
-    }
-}

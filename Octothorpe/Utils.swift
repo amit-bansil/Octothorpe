@@ -35,6 +35,21 @@ extension UIColor {
     }
 }
 
+//allows use of closure as TapGestureRecognizer
+class UITapGestureRecognizzle : UITapGestureRecognizer {
+    var target : () -> ()
+    
+    init(target: () -> ()) {
+        self.target = target
+        
+        super.init(target: self, action: "invokeTarget:")
+    }
+    
+    func invokeTarget(nizer: UITapGestureRecognizer!) {
+        target()
+    }
+}
+
 extension CGPoint {
     func moveToward(target: CGPoint, amount: Double)-> CGPoint {
         return self + CGFloat(amount) * (target - self)
