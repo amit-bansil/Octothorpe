@@ -99,11 +99,11 @@
 				200EDC6D1992AD6600C32649 /* PlayerView.swift */,
 				200EDC6E1992AD6600C32649 /* TallyView.swift */,
 				200EDC6B1992AD6600C32649 /* ArrowView.swift */,
+				200EDC791992C1E600C32649 /* Styles.swift */,
 				200EDC6F1992AD6700C32649 /* Utils.swift */,
 				200EDC4A1992ABC100C32649 /* AppDelegate.swift */,
 				200EDC511992ABC100C32649 /* Images.xcassets */,
 				200EDC481992ABC100C32649 /* Supporting Files */,
-				200EDC791992C1E600C32649 /* Styles.swift */,
 			);
 			path = Octothorpe;
 			sourceTree = "<group>";

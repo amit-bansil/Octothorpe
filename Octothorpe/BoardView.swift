@@ -82,30 +82,6 @@ class BoardView: UIView {
     }
 }
 
-func dropIn(view: UIView, delay: NSTimeInterval) {
-    view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 2.5, 2.5);
-    view.hidden = true
-    UIView.animateWithDuration(delay,
-        delay:0.0,
-        options:.CurveEaseOut,
-        animations:{},
-        completion:{
-            (t: Bool) in
-            view.hidden = false
-            UIView.animateWithDuration(0.15,
-                delay:0.0,
-                options:.CurveEaseOut,
-                animations:{
-                    view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
-                },
-                completion:{
-                    (t: Bool) in
-                }
-            )
-        }
-    )
-}
-
 class UITapGestureRecognizzle : UITapGestureRecognizer {
     var target : () -> ()
     
