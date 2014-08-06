@@ -19,6 +19,7 @@
 		200EDC761992AD6700C32649 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6D1992AD6600C32649 /* PlayerView.swift */; };
 		200EDC771992AD6700C32649 /* TallyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6E1992AD6600C32649 /* TallyView.swift */; };
 		200EDC781992AD6700C32649 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC6F1992AD6700C32649 /* Utils.swift */; };
+		200EDC7A1992C1E600C32649 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200EDC791992C1E600C32649 /* Styles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		200EDC6D1992AD6600C32649 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		200EDC6E1992AD6600C32649 /* TallyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallyView.swift; sourceTree = "<group>"; };
 		200EDC6F1992AD6700C32649 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		200EDC791992C1E600C32649 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				200EDC4A1992ABC100C32649 /* AppDelegate.swift */,
 				200EDC511992ABC100C32649 /* Images.xcassets */,
 				200EDC481992ABC100C32649 /* Supporting Files */,
+				200EDC791992C1E600C32649 /* Styles.swift */,
 			);
 			path = Octothorpe;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				200EDC761992AD6700C32649 /* PlayerView.swift in Sources */,
+				200EDC7A1992C1E600C32649 /* Styles.swift in Sources */,
 				200EDC741992AD6700C32649 /* ArrowView.swift in Sources */,
 				200EDC731992AD6700C32649 /* DotView.swift in Sources */,
 				200EDC711992AD6700C32649 /* BoardView.swift in Sources */,
