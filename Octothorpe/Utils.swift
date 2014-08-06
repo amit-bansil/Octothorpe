@@ -37,12 +37,18 @@ extension UIColor {
 
 extension CGPoint {
     func moveToward(target: CGPoint, amount: Double)-> CGPoint {
-        let tx: Double = Double(target.x),
-            ty: Double = Double(target.y),
-             x: Double = Double(self.x),
-             y: Double = Double(self.y)
-        
-        return CGPoint(x: CGFloat(x + (tx - x) * amount),
-                       y: CGFloat(y + (ty - y) * amount))
+        return self + CGFloat(amount) * (target - self)
     }
+}
+
+func +(lhs: CGPoint, rhs: CGPoint)-> CGPoint {
+    return CGPoint(x:lhs.x + rhs.x, y:lhs.y + rhs.y)
+}
+
+func *(lhs: CGFloat, rhs: CGPoint)-> CGPoint {
+    return CGPoint(x:lhs * rhs.x, y:lhs * rhs.y)
+}
+
+func -(lhs: CGPoint, rhs: CGPoint)-> CGPoint {
+    return lhs + -1 * rhs
 }
