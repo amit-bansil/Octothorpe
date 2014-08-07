@@ -6,7 +6,7 @@
 //
 
 //describes buisness logic of game in isolation from any rendering/interactivity
-public class Model: Observable { //OOP w/o multiple inheritance. Yay!
+public class Model: Observable {
     private var board = [Point:Player]()
     //player whose move it is next
     private(set) var currentPlayer: Player
@@ -87,7 +87,6 @@ public class Model: Observable { //OOP w/o multiple inheritance. Yay!
         dispatchEvent()
     }
 }
-
 
 public enum Player {
     case X, O

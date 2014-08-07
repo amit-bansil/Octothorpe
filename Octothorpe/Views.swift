@@ -22,7 +22,6 @@ class BoardView: UIView {
         if self.model != nil {
             if(board.count == 0){
                 setupBoard()
-                
             }
             
             layoutBoard()
